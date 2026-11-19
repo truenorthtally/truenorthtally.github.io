@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://truenorthtally.github.io/sitemap.xml

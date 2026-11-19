@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-Employed Tax Calculator Canada 2026 | How Much to Set Aside</title>
+<meta name="description" content="Free 2026 calculator for Canadian freelancers, contractors and gig drivers: estimate income tax and CPP on your self-employment profit and how much to set aside each month.">
+<link rel="canonical" href="https://truenorthtally.github.io/self-employed-tax-calculator.html">
+<meta property="og:title" content="How much tax should I set aside? (Canada, 2026)">
+<meta property="og:description" content="Free calculator: income tax + CPP on self-employment profit, by province.">
+<style>
+:root{--teal:#0F766E;--teal-l:#CCFBF1;--ink:#1F2A37;--cream:#FAF7F0;--muted:#6B7280;--card:#fff;--line:#E5E7EB}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E7EB;--cream:#0f1416;--card:#182024;--line:#2a3439;--muted:#9CA3AF;--teal-l:#134e4a}}
+*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--cream)}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header{padding:40px 0 8px}h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:.2em 0}
+.kicker{color:var(--teal);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin:18px 0}
+label{display:block;font-weight:700;margin:12px 0 4px}
+input,select{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:600px){.row{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse}td{padding:8px 4px;border-bottom:1px solid var(--line)}td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.big{background:var(--teal-l);border-radius:12px;padding:16px;margin-top:14px;font-size:20px}
+.big b{font-size:28px;color:var(--teal)}
+.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px;margin:6px 6px 0 0}
+small,.muted{color:var(--muted)}footer{color:var(--muted);font-size:14px;padding:30px 0}
+h2{font-size:24px;margin:.6em 0 .2em}
+</style>
+</head>
+<body><div class="wrap">
+<header>
+<div class="kicker">Free tool · 2026 tax year</div>
+<h1>How much tax should I set aside? Self-employed calculator (Canada)</h1>
+<p>Enter your expected business profit. It estimates your 2026 federal and provincial income tax plus both halves of CPP, and how much to put away each month.</p>
+</header>
+
+<div class="card">
+<div class="row">
+<div><label for="prov">Province / territory</label>
+<select id="prov">
+<option value="ON">Ontario</option><option value="BC">British Columbia</option><option value="AB">Alberta</option>
+<option value="SK">Saskatchewan</option><option value="MB">Manitoba</option><option value="NB">New Brunswick</option>
+<option value="NS">Nova Scotia</option><option value="PE">Prince Edward Island</option><option value="NL">Newfoundland and Labrador</option>
+<option value="YT">Yukon</option><option value="NT">Northwest Territories</option><option value="NU">Nunavut</option>
+</select><small>Quebec isn't supported (QPP and Revenu Québec rules differ).</small></div>
+<div><label for="profit">Expected 2026 profit (income minus expenses)</label>
+<input id="profit" type="number" inputmode="decimal" min="0" step="100" value="40000"></div>
+</div>
+<label for="paid">Tax instalments already paid this year (optional)</label>
+<input id="paid" type="number" inputmode="decimal" min="0" step="100" value="0">
+
+<table id="out" aria-live="polite"></table>
+<div class="big" id="big"></div>
+<p class="muted">If you're registered for GST/HST, set aside the GST/HST you collect minus your input tax credits as well. That money isn't income.</p>
+</div>
+
+<div class="card">
+<h2>Track it all year instead of guessing</h2>
+<p>The TrueNorthTally workbooks do this from your real income and receipts. They sort expenses into CRA T2125 lines, work out GST/HST, and keep a running set-aside. Excel, Google Sheets or Numbers.</p>
+<a class="btn" href="https://truenorthtally.github.io/#products">See the workbooks</a> <a class="btn" style="background:transparent;color:var(--teal);border:2px solid var(--teal)" href="https://payhip.com/b/3Zv21">Free tracker</a>
+</div>
+
+<div class="card">
+<h2>How this is calculated</h2>
+<p class="muted">Uses the published 2026 federal and provincial tax brackets and basic personal amounts, and 2026 CPP (11.9% on earnings between $3,500 and $74,600, plus 8% CPP2 up to $85,000). Self-employed people pay both halves of CPP. The "employer" half and the enhanced parts are deducted from income, and the base employee part is claimed as a credit. Ontario surtax and Health Premium are included. It assumes self-employment is your only income and leaves out other credits (tuition, RRSP, dependants and so on), so treat it as a planning estimate, not a tax return. Check canada.ca or a tax professional before filing.</p>
+</div>
+
+<footer>Independent Canadian small shop. Not affiliated with the CRA. Built with help from AI tools. Contact: truenorthtally@gmail.com · <a href="https://truenorthtally.github.io/">TrueNorthTally</a></footer>
+</div>
+<script>
+const FED={b:[[58523,.14],[117045,.205],[181440,.26],[258482,.29],[1e15,.33]],bpa:16452};
+const P={ON:{b:[[53891,.0505],[107785,.0915],[150000,.1116],[220000,.1216],[1e15,.1316]],bpa:12989},
+BC:{b:[[50363,.056],[100728,.077],[115648,.105],[140430,.1229],[190405,.147],[265545,.168],[1e15,.205]],bpa:13216},
+AB:{b:[[61200,.08],[154259,.10],[185111,.12],[246813,.13],[370220,.14],[1e15,.15]],bpa:22769},
+SK:{b:[[54532,.105],[155805,.125],[1e15,.145]],bpa:20381},
+MB:{b:[[47000,.108],[100000,.1275],[1e15,.174]],bpa:15780},
+NB:{b:[[52333,.094],[104666,.14],[193861,.16],[1e15,.195]],bpa:13664},
+NS:{b:[[30995,.0879],[61991,.1495],[97417,.1667],[157124,.175],[1e15,.21]],bpa:11932},
+PE:{b:[[33928,.095],[65820,.1347],[106890,.166],[142250,.1762],[200000,.19],[1e15,.20]],bpa:15000},
+NL:{b:[[44678,.087],[89354,.145],[159528,.158],[223340,.178],[285319,.198],[570638,.208],[1141275,.213],[1e15,.218]],bpa:13094},
+YT:{b:[[58523,.064],[117045,.09],[181440,.109],[258482,.1293],[500000,.128],[1e15,.15]],bpa:16452},
+NT:{b:[[53003,.059],[106009,.086],[172346,.122],[1e15,.1405]],bpa:18198},
+NU:{b:[[55801,.04],[111602,.07],[181439,.09],[1e15,.115]],bpa:19659}};
+function brk(x,b){let t=0,lo=0;for(const[hi,r]of b){if(x>lo)t+=(Math.min(x,hi)-lo)*r;lo=hi}return t}
+function fedBpa(ni){if(ni<=181440)return 16452;if(ni>=258482)return 14829;return 16452-(16452-14829)*(ni-181440)/(258482-181440)}
+function ohp(t){if(t<=20000)return 0;if(t<=36000)return Math.min(300,.06*(t-20000));if(t<=48000)return Math.min(450,300+.06*(t-36000));if(t<=72000)return Math.min(600,450+.25*(t-48000));if(t<=200000)return Math.min(750,600+.25*(t-72000));return Math.min(900,750+.25*(t-200000))}
+const $=id=>document.getElementById(id),fmt=n=>n.toLocaleString('en-CA',{style:'currency',currency:'CAD',maximumFractionDigits:0});
+function calc(){const N=Math.max(0,+$('profit').value||0),pv=$('prov').value,paid=Math.max(0,+$('paid').value||0);
+const pe=Math.max(0,Math.min(N,74600)-3500),cpp1=.119*pe,cpp2=.08*Math.max(0,Math.min(N,85000)-74600),cpp=cpp1+cpp2;
+const ded=.0595*pe+.01*pe+cpp2,cr=.0495*pe,ti=Math.max(0,N-ded);
+const fed=Math.max(0,brk(ti,FED.b)-.14*(fedBpa(ti)+cr));
+const pr=P[pv],low=pr.b[0][1];let pbpa=pv==='YT'?fedBpa(ti):pr.bpa;
+let prov=Math.max(0,brk(ti,pr.b)-low*(pbpa+cr));
+if(pv==='ON'){prov+=.2*Math.max(0,prov-5818)+.36*Math.max(0,prov-7446);prov+=ohp(ti)}
+const tot=fed+prov+cpp,left=Math.max(0,tot-paid),pct=N?tot/N:0;
+$('out').innerHTML=`<tr><td>Federal income tax</td><td>${fmt(fed)}</td></tr><tr><td>Provincial income tax${pv==='ON'?' (incl. surtax &amp; Health Premium)':''}</td><td>${fmt(prov)}</td></tr><tr><td>CPP (both halves${cpp2?' + CPP2':''})</td><td>${fmt(cpp)}</td></tr><tr><td><b>Total for 2026</b></td><td><b>${fmt(tot)}</b></td></tr>${paid?`<tr><td>Minus instalments paid</td><td>−${fmt(paid)}</td></tr>`:''}`;
+$('big').innerHTML=`Set aside about <b>${Math.round(pct*100)}%</b> of profit: <b>${fmt(left/12)}</b> a month, ${fmt(left)} in total.`}
+['prov','profit','paid'].forEach(i=>$(i).addEventListener('input',calc));calc();
+</script>
+</body></html>
